@@ -1,0 +1,22 @@
+plugins {
+    id 'java-library'
+    id 'eclipse'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '1.25'    
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+eclipse.classpath.file.whenMerged {
+	def source = entries.find { it.path.endsWith('snakeyaml-1.25.jar') }
+    source.entryAttributes['module'] = 'true'
+}
